@@ -1,0 +1,6 @@
+
+POST    /flights/api/users  	                   // add user
+GET     /flights/api/users/{username}              // get user by username
+
+
+
