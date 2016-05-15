@@ -13,6 +13,7 @@ import com.cooksys.flights.models.User;
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
+
 	@Autowired
 	private UserDao userDao;
 
