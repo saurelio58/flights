@@ -28,6 +28,7 @@
           } else {
             this.currentUser = user
             $state.go('selectTrip')
+            $log.debug('AccessService.register-$state.go failed-we should not get here');
           }
         });
     };
@@ -49,6 +50,7 @@
               delete this.currentUser.password;
               credentials = undefined;
               $state.go('selectTrip');
+              $log.debug('AccessService.login-$state.go failed-we should not get here');
             } else {
               $log.debug('AccessService.login-invalid username or password');
               this.currentuser = undefined;
