@@ -1,19 +1,7 @@
 
-POST    /flights/api/users  	                   // add user
-GET     /flights/api/users/{username}              // get user by username
+POST /flights/api/users  	            // add user
+GET  /flights/api/users/{username}          // get user by username
 
-POST    /flights/api/flights                // get flights for a route - takes a body with origin & destina
-Example:
-{
-"route": {
-  "origin": {
-    "state": "Mississippi",
-    "city": "Hattiesburg"
-    },
-     
-  "destination": {
-    "state": "Louisiana",
-    "city": "Shreveport"
-    }
-  }
-}
+GET  /flights/api/locations                 // get locations serviced     
+
+POST    /flights/api/flights                // get flights for a route - takes a body of RouteModel
