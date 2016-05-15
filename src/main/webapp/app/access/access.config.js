@@ -2,7 +2,7 @@
 
 (() => {
   angular
-    .module('fastbook.access')
+    .module('flights.access')
     .config(config)
 
     config.$inject = ['accessRoutes', '$stateProvider']

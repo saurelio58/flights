@@ -2,7 +2,7 @@
 
 (() => {
   angular
-    .module('fastbook.user', [
+    .module('flights.user', [
 
     ])
 

@@ -2,21 +2,19 @@
 
 (() => {
   angular
-    .module('fastbook.access')
+    .module('flights.access')
     .controller('RegisterController', RegisterController);
 
   RegisterController.$inject = ['$scope', 'accessService', '$state', '$log'];
 
   function RegisterController($scope, accessService, $state, $log) {
+    $log.debug('RegisterController-init');
 
-    $log.debug('Creating $register');
     $scope.date = new Date();
 
-    this.maxDate = new Date();
-
     this.register = () => {
+      $log.debug('RegisterController.register-init');
       this.errorMessage = null;
-      this.user.joinDate = $scope.date;
       accessService
         .register(this.user)
         .then(result => {
@@ -26,7 +24,7 @@
     }
 
     this.goToLogin = () => {
-      $log.debug('Clicked goToLogin');
+      $log.debug('RegisterController.goToLogin-init');
       $state.go('login');
     }
   }

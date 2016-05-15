@@ -1,14 +1,13 @@
 (() => {
   angular
-    .module('fastbook')
-    .controller('AppController', AppController);
+    .module('flights')
+    .controller('AppController', AppController)
 
-  AppController.$inject = ['accessService', 'chatService'];
+  AppController.$inject = ['accessService']
 
-  function AppController(accessService, chatService) {
+  function AppController(accessService) {
     this.accessService = accessService;
-    this.chatService = chatService;
 
   }
 
-})();
+})()

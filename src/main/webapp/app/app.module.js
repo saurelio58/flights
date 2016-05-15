@@ -2,16 +2,13 @@
 
 (() => {
   angular
-    .module('fastbook', [
+    .module('flights', [
       'ngMaterial',
       'ngMessages',
       'ui.router',
       'dtrw.bcrypt',
-      'fastbook.user',
-      'fastbook.access',
-      'fastbook.chat',
-      'fastbook.friend',
-      'fastbook.group'
+      'flights.user',
+      'flights.access'
     ])
 
-})();
+})()

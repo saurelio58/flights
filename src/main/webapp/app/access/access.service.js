@@ -2,15 +2,18 @@
 
 (() => {
   angular
-    .module('fastbook.access')
+    .module('flights.access')
     .service('accessService', AccessService);
 
-  AccessService.$inject = ['bcrypt', '$http', '$log', '$location', '$state'];
+  AccessService.$inject = ['bcrypt', '$http', '$log', '$state'];
 
-  function AccessService(bcrypt, $http, $log, $location, $state) {
+  function AccessService(bcrypt, $http, $log, $state) {
+    $log.debug('AccessService-init')
+
     this.currentUser
-    
+
     this.register = (user) => {
+      $log.debug('AccessService.register-init')
       let salt = bcrypt.genSaltSync(4);
       let hash = bcrypt.hashSync(user.password, salt);
       user.password = hash;
@@ -19,36 +22,35 @@
         .post('./api/users', user)
         .then(response => response.data)
         .then(user => {
-          if (user.id == null) {
+          if (user.username == null) {
             //  user already exists
             return null;
           } else {
-            this.currentUser = user;
-            $location.path('users/' + this.currentUser.id);
+            this.currentUser = user
+            $state.go('selectTrip')
           }
         });
     };
 
     this.login = (credentials) => {
-      $log.debug('Calling AccessService.login()');
+      $log.debug('AccessService.login-init')
       return $http
-        .post('./api/users/login', credentials.email) // returns response
+        .get('./api/users/' + credentials.username) // returns response
         .then(response => response.data) // t response, r user
         .then(user => {
-          if (user.id == null) {
+          if (user.username == null) {
             // user not found
-            $log.debug('accessService.login-user not found')
+            $log.debug('AccessService.login-user not found')
             return null;
           } else {
             if (bcrypt.compareSync(credentials.password, user.password)) {
-              $log.debug('User Authenticated');
+              $log.debug('AccessService.login-user authenticated successfully');
               this.currentUser = user;
               delete this.currentUser.password;
-              $log.debug(this.currentUser);
               credentials = undefined;
-              $location.path('users/' + this.currentUser.id);
+              $state.go('selectTrip');
             } else {
-              $log.debug('invalid username or password');
+              $log.debug('AccessService.login-invalid username or password');
               this.currentuser = undefined;
             }
           }
@@ -58,7 +60,7 @@
 
     this.logout = () => {
       this.currentUser = undefined;
-      $state.go('register')
+      $state.go('login')
     }
 
     this.isLoggedOut = () => this.currentUser == undefined;
