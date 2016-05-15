@@ -4,4 +4,5 @@ GET  /flights/api/users/{username}          // get user by username
 
 GET  /flights/api/locations                 // get locations serviced     
 
-POST    /flights/api/flights                // get flights for a route - takes a body of RouteModel
+POST /flights/api/routes                    // get all possible routes for a trip - body of RouteModel
+  

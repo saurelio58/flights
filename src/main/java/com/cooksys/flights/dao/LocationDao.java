@@ -1,4 +1,4 @@
-package com.cooksys.flights.controllers;
+package com.cooksys.flights.dao;
 
 import java.util.List;
 

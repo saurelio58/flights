@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cooksys.flights.dao.FlightDao;
+import com.cooksys.flights.dao.RouteDao;
 import com.cooksys.flights.models.RouteModel;
 
 @Repository
 @Transactional
-public class FlightDaoImpl implements FlightDao {
+public class RouteDaoImpl implements RouteDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 

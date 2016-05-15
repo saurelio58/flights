@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.core.models.Location;
+import com.cooksys.flights.dao.LocationDao;
 
 @RestController
 @RequestMapping(value = "/locations")

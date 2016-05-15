@@ -2,7 +2,7 @@ package com.cooksys.flights.dao;
 
 import com.cooksys.flights.models.RouteModel;
 
-public interface FlightDao {
+public interface RouteDao {
 
 	RouteModel getFlightsForRoute(RouteModel routeModel);
 

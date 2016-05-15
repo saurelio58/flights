@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.core.models.Flight;
-import com.cooksys.flights.dao.FlightDao;
+import com.cooksys.flights.dao.RouteDao;
 import com.cooksys.flights.models.Route;
 import com.cooksys.flights.models.RouteModel;
 import com.cooksys.flights.models.User;
 
 @RestController
-@RequestMapping(value = "/flights")
-public class FlightController {
+@RequestMapping(value = "/routes")
+public class RouteController {
 	@Autowired
-	private FlightDao flightDao;
+	private RouteDao routeDao;
 
-	// flights/api/flights
+	// flights/api/routes
 	@RequestMapping(method = RequestMethod.POST)
 	public RouteModel getFlightsForRoute(@RequestBody RouteModel routeModel) {
-		return flightDao.getFlightsForRoute(routeModel);
+		return routeDao.getFlightsForRoute(routeModel);
 	}
 
 }

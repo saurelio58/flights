@@ -14,8 +14,8 @@ public class Route<Flight> {
 		this.flightList = flightList;
 	}
 
-	public void addFlight(Flight flight) {
-		flightList.addFirst(flight);
-	}
+//	public void addFlight(Flight flight) {
+//		flightList.addFirst(flight);
+//	}
 
 }
