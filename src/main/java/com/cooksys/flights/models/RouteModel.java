@@ -10,8 +10,6 @@ public class RouteModel {
 	private Location origin;
 	private Location destination;
 	private List<Route> routes;
-	
-	private ArrayList<Route> flightList = new ArrayList<Route>();
 
 	public Location getOrigin() {
 		return origin;
