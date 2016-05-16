@@ -9,7 +9,7 @@ public class RouteModel {
 
 	private Location origin;
 	private Location destination;
-	private List<Route> routes;
+	private List<Route> routeList;
 
 	public Location getOrigin() {
 		return origin;
@@ -28,11 +28,11 @@ public class RouteModel {
 	}
 
 	public List<Route> getRoutes() {
-		return routes;
+		return routeList;
 	}
 
 	public void setRoutes(List<Route> routes) {
-		this.routes = routes;
+		this.routeList = routes;
 	}
 
 }
