@@ -5,4 +5,10 @@ GET  /flights/api/users/{username}          // get user by username
 GET  /flights/api/locations                 // get locations serviced     
 
 POST /flights/api/routes                    // get all possible routes for a trip - body of RouteModel
+
   
+GET  //flights/api/trips/{username}         // gets RouteModel
+POST //flights/api/trips/{username}         // takes RouteModel
+
+
+
