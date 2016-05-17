@@ -88,7 +88,7 @@ public class RouteDaoImpl implements RouteDao {
 
 		// provide a routes list for routeModel - it will be null at this point
 		List<Route> routeList = new ArrayList<Route>();
-		routeModel.setRoutes(routeList);
+		routeModel.setRouteList(routeList);
 
 		userOrigin = routeModel.getOrigin();
 		userDestination = routeModel.getDestination();
@@ -107,6 +107,9 @@ public class RouteDaoImpl implements RouteDao {
 			if (flight.getDeparture() >= 0)
 				flightsAvailableList.add(flight);
 		}
+		
+		// put current day in routeModel for front end
+		routeModel.setCurrentDay(flightModel.getCurrentDay());
 
 		System.out.println("RouteDaoImpl.getFlightsForRoute-flightsAvailableList.size="
 				+ flightsAvailableList.size());
@@ -138,9 +141,9 @@ public class RouteDaoImpl implements RouteDao {
 					routeNew.setRouteComplete(true);
 					// add the complete route to the routeList
 					List<Route> routeList = new ArrayList<Route>();
-					routeList = routeModel.getRoutes();
+					routeList = routeModel.getRouteList();
 					routeList.add(routeNew);
-					routeModel.setRoutes(routeList);
+					routeModel.setRouteList(routeList);
 				} else {
 					List<Flight> flightListNew = new ArrayList<Flight>();
 					flightListNew = TrimFlightList(flightsAvailable, flight);
