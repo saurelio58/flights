@@ -3,6 +3,10 @@
   <h1>Trip Selector</h1>
   <md-divider></md-divider>
 
+  <div>{{flightCtrl.message}}</div>
+
+
+
   <div layout="column">
     <form class="form-login" name="tripSelect" novalidate style="margin-top: 10px;">
 
@@ -38,7 +42,7 @@
 
     <!-- layout possible routes -->
     <div layout="column" layout-align="center start" layout-margin>
-      <div ng-repeat="route in flightCtrl.routeModel.routeList">
+      <div ng-repeat="route in flightCtrl.routeModel.routeList | orderBy: 'arriveDay'">
 
         <div layout="row" flex>
           <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightCtrl.bookRoute(route)">
@@ -58,8 +62,10 @@
         <div ng-repeat="flight in route.flightList">
           Flight# {{flight.flightId}}
           <br> From: {{flight.origin.city}}, {{flight.origin.state}}
-          <br> To:   {{flight.destination.city}}, {{flight.destination.state}}
-        </div </div>
+          <br> To: {{flight.destination.city}}, {{flight.destination.state}}
+          <br>
+        </div>
+        <md-divider></md-divider>
       </div>
 
     </div>
