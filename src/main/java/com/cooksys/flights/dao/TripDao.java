@@ -1,12 +1,16 @@
 package com.cooksys.flights.dao;
 
+import com.cooksys.core.models.Flight;
+import com.cooksys.flights.models.Route;
 import com.cooksys.flights.models.RouteModel;
 import com.cooksys.flights.models.User;
 
 public interface TripDao {
 
-	User addTrip(RouteModel route);
+	Route addTrip(String username, Route route);
 
-	User getTrip(String username);
+	RouteModel getTrips(String username);
+
+	
 
 }

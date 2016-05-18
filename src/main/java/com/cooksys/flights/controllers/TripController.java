@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.flights.dao.TripDao;
-import com.cooksys.flights.dao.UserDao;
+import com.cooksys.flights.models.Route;
 import com.cooksys.flights.models.RouteModel;
 import com.cooksys.flights.models.User;
 
@@ -20,14 +20,14 @@ public class TripController {
 
 	// flights/api/trips/{username}
 	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
-	public User addTrip(@RequestBody RouteModel route) {
-		return tripDao.addTrip(route);
+	public Route addTrip(@PathVariable String username, @RequestBody Route route) {
+		return tripDao.addTrip(username, route);
 	}
 
 	// flights/api/users/{username}
 	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
-	public User getTrip(@PathVariable String username) {
-		return tripDao.getTrip(username);
+	public RouteModel getTrips(@PathVariable String username) {
+		return tripDao.getTrips(username);
 	}
 
 }

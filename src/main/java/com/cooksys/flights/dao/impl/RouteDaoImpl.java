@@ -1,7 +1,6 @@
 package com.cooksys.flights.dao.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -93,10 +92,9 @@ public class RouteDaoImpl implements RouteDao {
 		userOrigin = routeModel.getOrigin();
 		userDestination = routeModel.getDestination();
 
+		// TESTING - next line
 		// flightModel = testFM;
-
 		// // get FlightModel from service
-		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		RestTemplate restTemplate = new RestTemplate();
 		flightModel = restTemplate.getForObject(
 				"http://localhost:8080/bc-final-webservice/getFlightModel", FlightModel.class);
@@ -129,22 +127,26 @@ public class RouteDaoImpl implements RouteDao {
 			if (flight.getDestination().equals(destination)) {
 
 				List<Flight> workingRoute = new ArrayList<Flight>();
-				workingRoute.add(flight); // new flight goes in the front
+				workingRoute.add(flight); // new flight goes in the front of
+											// list
 				workingRoute.addAll(workingRouteParm);
 
 				if (flight.getOrigin().equals(origin)) {
 					// we have a complete route
 					Route routeNew = new Route();
-					LinkedList<Flight> flightListNew = new LinkedList<Flight>();
+					List<Flight> flightListNew = new ArrayList<Flight>();
 					flightListNew.addAll(workingRoute);
 					routeNew.setFlightList(flightListNew);
 					routeNew.setRouteComplete(true);
+
 					/////////////////
 					routeNew.setDepartDay(flight.getDeparture());
-					Flight lastFlight = flightListNew.getLast();
+					// get last FLight
+					Flight lastFlight = flightListNew.get(flightListNew.size() - 1);
 					routeNew.setArriveDay(lastFlight.getDeparture() + lastFlight.getEta());
 					routeNew.setNumFlights(flightListNew.size());
 					////////////////////
+					
 					// add the complete route to the routeList
 					List<Route> routeList = new ArrayList<Route>();
 					routeList = routeModel.getRouteList();

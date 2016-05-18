@@ -1,6 +1,7 @@
 package com.cooksys.flights.models;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Route<Flight> {
 
@@ -8,7 +9,7 @@ public class Route<Flight> {
 	private Integer departDay;
 	private Integer arriveDay;
 	private Integer numFlights;
-	private LinkedList<Flight> flightList = new LinkedList<Flight>();
+	private List<Flight> flightList = new ArrayList<Flight>();
 	public Boolean getRouteComplete() {
 		return routeComplete;
 	}
@@ -33,12 +34,14 @@ public class Route<Flight> {
 	public void setNumFlights(Integer numFlights) {
 		this.numFlights = numFlights;
 	}
-	public LinkedList<Flight> getFlightList() {
+	public List<Flight> getFlightList() {
 		return flightList;
 	}
-	public void setFlightList(LinkedList<Flight> flightList) {
+	public void setFlightList(List<Flight> flightList) {
 		this.flightList = flightList;
 	}
+	
+	
 	
 	
 
