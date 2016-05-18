@@ -5,9 +5,9 @@
     .module('flights.flight')
     .service('flightService', FlightService);
 
-  FlightService.$inject = ['$http', '$log'];
+  FlightService.$inject = ['accessService','$http', '$log'];
 
-  function FlightService($http, $log) {
+  function FlightService(accessService, $http, $log) {
     $log.debug('flightService-init')
 
 
@@ -18,7 +18,7 @@
         .then(response => response.data)
         .then(result => {
           $log.debug('flightService.getRouteModel-exit')
-          $log.debug(routeModel)
+          $log.debug(result)
           angular.extend(routeModel, result);
         })
     };
@@ -29,6 +29,18 @@
         .get('./api/locations')
         .then(response => response.data)
     };
+
+    this.bookFlights = (route) => {
+      $log.debug('flightService.bookRoute-init')
+
+      return $http
+        .post('./api/trips/' + accessService.currentUser.username, route)
+        .then(response => response.data)
+
+
+
+
+    }
 
 
   }

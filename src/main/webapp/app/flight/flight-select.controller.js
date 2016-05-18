@@ -15,6 +15,20 @@
     this.userOrigin
     this.userDestination
     this.routeModel = {}
+    this.message
+
+    this.bookRoute = function(route) {
+      $log.debug('FlightSelectController.bookRoute-init')
+      $log.debug('route=')
+      $log.debug(route)
+
+      flightService.bookFlights(route)
+        // check for errors ???
+
+
+      this.message = 'Your Trip has been reserved!'
+
+    }
 
     this.select = () => {
       $log.debug('FlightSelectController.select-init')
@@ -24,14 +38,11 @@
       this.routeModel.origin = this.userOrigin
       this.routeModel.destination = this.userDestination
       flightService.getRouteModel(this.routeModel)
+
+      this.message = null
     }
 
-    this.bookRoute = function(route) {
-      $log.debug('FlightSelectController.bookRoute-init')
-      $log.debug('route=')
-      $log.debug(route)
 
-    }
 
 
 
