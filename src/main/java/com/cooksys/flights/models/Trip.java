@@ -1,5 +1,5 @@
 package com.cooksys.flights.models;
-// Generated May 14, 2016 9:10:34 PM by Hibernate Tools 4.3.1.Final
+// Generated May 18, 2016 8:04:28 AM by Hibernate Tools 4.3.1.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -33,6 +33,13 @@ public class Trip implements java.io.Serializable {
 	private String tripName;
 	private String confirmationId;
 	private Date lastUpdated;
+	private String orginState;
+	private String orginCity;
+	private String destinationState;
+	private String destionationCity;
+	private Integer departDay;
+	private Integer arriveDay;
+	private Integer numFlights;
 	@JsonIgnore
 	private Set<Segment> segments = new HashSet<Segment>(0);
 	@JsonIgnore
@@ -41,15 +48,31 @@ public class Trip implements java.io.Serializable {
 	public Trip() {
 	}
 
-	public Trip(Date lastUpdated) {
+	public Trip(Date lastUpdated, String orginState, String orginCity, String destinationState,
+			String destionationCity, Integer departDay, Integer arriveDay, Integer numFlights) {
 		this.lastUpdated = lastUpdated;
+		this.orginState = orginState;
+		this.orginCity = orginCity;
+		this.destinationState = destinationState;
+		this.destionationCity = destionationCity;
+		this.departDay = departDay;
+		this.arriveDay = arriveDay;
+		this.numFlights = numFlights;
 	}
 
-	public Trip(String tripName, String confirmationId, Date lastUpdated, Set<Segment> segments,
-			Set<User> users) {
+	public Trip(String tripName, String confirmationId, Date lastUpdated, String orginState,
+			String orginCity, String destinationState, String destionationCity, Integer departDay,
+			Integer arriveDay, Integer numFlights, Set<Segment> segments, Set<User> users) {
 		this.tripName = tripName;
 		this.confirmationId = confirmationId;
 		this.lastUpdated = lastUpdated;
+		this.orginState = orginState;
+		this.orginCity = orginCity;
+		this.destinationState = destinationState;
+		this.destionationCity = destionationCity;
+		this.departDay = departDay;
+		this.arriveDay = arriveDay;
+		this.numFlights = numFlights;
 		this.segments = segments;
 		this.users = users;
 	}
@@ -92,6 +115,69 @@ public class Trip implements java.io.Serializable {
 
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+
+	@Column(name = "orgin_state", nullable = false, length = 45)
+	public String getOrginState() {
+		return this.orginState;
+	}
+
+	public void setOrginState(String orginState) {
+		this.orginState = orginState;
+	}
+
+	@Column(name = "orgin_city", nullable = false, length = 45)
+	public String getOrginCity() {
+		return this.orginCity;
+	}
+
+	public void setOrginCity(String orginCity) {
+		this.orginCity = orginCity;
+	}
+
+	@Column(name = "destination_state", nullable = false, length = 45)
+	public String getDestinationState() {
+		return this.destinationState;
+	}
+
+	public void setDestinationState(String destinationState) {
+		this.destinationState = destinationState;
+	}
+
+	@Column(name = "destionation_city", nullable = false, length = 45)
+	public String getDestionationCity() {
+		return this.destionationCity;
+	}
+
+	public void setDestionationCity(String destionationCity) {
+		this.destionationCity = destionationCity;
+	}
+
+	@Column(name = "depart_day", nullable = false)
+	public Integer getDepartDay() {
+		return this.departDay;
+	}
+
+	public void setDepartDay(Integer departDay) {
+		this.departDay = departDay;
+	}
+
+	@Column(name = "arriveDay", nullable = false)
+	public Integer getArriveDay() {
+		return this.arriveDay;
+	}
+
+	public void setArriveDay(Integer arriveDay) {
+		this.arriveDay = arriveDay;
+	}
+
+	@Column(name = "numFlights", nullable = false)
+	public Integer getNumFlights() {
+		return this.numFlights;
+	}
+
+	public void setNumFlights(Integer numFlights) {
+		this.numFlights = numFlights;
 	}
 
 	@ManyToMany(fetch = FetchType.LAZY)

@@ -1,5 +1,5 @@
 package com.cooksys.flights.models;
-// Generated May 14, 2016 9:10:34 PM by Hibernate Tools 4.3.1.Final
+// Generated May 18, 2016 8:04:28 AM by Hibernate Tools 4.3.1.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
