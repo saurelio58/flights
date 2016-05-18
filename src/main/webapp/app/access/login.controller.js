@@ -17,7 +17,6 @@
       accessService
         .login(this.credentials)
         .then(result => {
-          // User or password invalid - we don't come back if the user logs in
           this.errorMessage = 'Invalid User Name or Password!';
         })
     }
