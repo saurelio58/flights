@@ -8,7 +8,7 @@ POST /flights/api/routes                    // get all possible routes for a tri
 
   
 GET  //flights/api/trips/{username}         // gets RouteModel
-POST //flights/api/trips/{username}         // takes RouteModel
+POST //flights/api/trips/{username}         // takes Route to reserve 'ticket'
 
 
 
