@@ -173,8 +173,8 @@ public class RouteDaoImpl implements RouteDao {
 				flightListNew.add(flight);
 		}
 
-		System.out.println(
-				"RouteDaoImpl.TrimFlightList-flightsAvailableList.size=" + flightListNew.size());
+//		System.out.println(
+//				"RouteDaoImpl.TrimFlightList-flightsAvailableList.size=" + flightListNew.size());
 		return flightListNew;
 	}
 

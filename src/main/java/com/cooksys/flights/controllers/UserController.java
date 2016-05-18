@@ -16,7 +16,9 @@ public class UserController {
 
 	@Autowired
 	private UserDao userDao;
-
+	@Autowired
+	com.cooksys.flights.messaging.JMSFlightUpdateController JMSFlightUpdateController;
+	
 	// flights/api/users
 	@RequestMapping(method = RequestMethod.POST)
 	public User addUser(@RequestBody User user) {

@@ -97,6 +97,7 @@ public class TripDaoImpl implements TripDao {
 		for (Flight flt : flightList) {
 			Segment seg = new Segment();
 			seg.setFlightNumber(flt.getFlightId());
+			seg.setFlightStatus('X');
 			segments.add(seg);
 		}
 		userTrip.setSegments(segments);
@@ -107,7 +108,7 @@ public class TripDaoImpl implements TripDao {
 		segments = userTrip.getSegments();
 		for (Segment segment : segments) {
 			Serializable rtn = session.save(segment);
-			System.out.println("TripDaoImpl-session.save(segment) return=" + rtn);
+//			System.out.println("TripDaoImpl-session.save(segment) return=" + rtn);
 		}
 
 		return route;
