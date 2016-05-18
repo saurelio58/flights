@@ -1,6 +1,5 @@
 package com.cooksys.flights.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cooksys.core.models.Location;

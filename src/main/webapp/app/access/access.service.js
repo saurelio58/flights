@@ -5,9 +5,9 @@
     .module('flights.access')
     .service('accessService', AccessService);
 
-  AccessService.$inject = ['bcrypt', '$http', '$log', '$state'];
+  AccessService.$inject = ['bcrypt', '$http', '$location', '$log', '$state'];
 
-  function AccessService(bcrypt, $http, $log, $state) {
+  function AccessService(bcrypt, $http, $location, $log, $state) {
     $log.debug('AccessService-init')
 
     this.currentUser
@@ -27,8 +27,7 @@
             return null;
           } else {
             this.currentUser = user
-            $state.go('selectTrip')
-            $log.debug('AccessService.register-$state.go failed-we should not get here');
+            $location.path('flight/select')
           }
         });
     };
@@ -49,8 +48,11 @@
               this.currentUser = user;
               delete this.currentUser.password;
               credentials = undefined;
-              $state.go('selectTrip');
-              $log.debug('AccessService.login-$state.go failed-we should not get here');
+              $log.debug('AccessService.login-ready to transfer to "flight/select"')
+              // $location.path('flight/select')
+              // $location.path('register')
+              $state.go('trip')
+              // $state.go('register')
             } else {
               $log.debug('AccessService.login-invalid username or password');
               this.currentuser = undefined;

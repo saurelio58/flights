@@ -8,6 +8,7 @@
       'ui.router',
       'dtrw.bcrypt',
       'flights.user',
+      'flights.flight',
       'flights.access'
     ])
 

@@ -37,41 +37,46 @@
   <script src="./app/access/access.routes.js"></script>
   <script src="./app/access/access.config.js"></script>
 
+  <script src="./app/flight/flight.module.js"></script>
+  <script src="./app/flight/flight-select.controller.js"></script>
+  <script src="./app/flight/flight.service.js"></script><script src="./app/flight/flight.routes.js">
+</script>
+  <script src="./app/flight/flight.config.js"></script>
+
+
   <script src="./app/app.module.js"></script>
   <script src="./app/app.controller.js"></script>
   <script src="./app/app.config.js"></script>
   <script src="./app/app.run.js"></script>
 
-  <!-- <script src="./app/nav_bar/nav.controller.js"></script> -->
-
-  <!-- <script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script> -->
-
 </head>
 
 <body ng-cloak>
 
-  <md-toolbar class="row" ng-controller="AppController as app" style="box-shadow: 2px 2px 5px #888888;">
+  <md-toolbar class="row" ng-controller="AppController as app" style="box-shadow: 2px 2px 5px;">
     <div class="md-toolbar-tools">
 
       <h1>CookSys Airways</h1>
 
       <md-divider></md-divider>
 
-      <h3 ng-if="app.accessService.isLoggedIn()" style="font-size: 14dp; float: right; text-align: right; margin-right: 5px;">
+      <div layout-align="end center">
+        <h3 ng-if="app.accessService.isLoggedIn()" style="font-size: 14dp; float: right; text-align: right; margin-right: 5px;">
           Logged in as:<br>{{app.accessService.currentUser.firstName}} {{app.accessService.currentUser.lastName}}
-      </h3>
+        </h3>
 
-      <md-button class="md-raised" aria-label="Login" ng-click="$state.go('login')" ng-if="$state.is('register')">
-        Login
-      </md-button>
+        <md-button class="md-raised" aria-label="Login" ng-click="$state.go('login')" ng-if="$state.is('register')">
+          Login
+        </md-button>
 
-      <md-button class="md-raised" aria-label="Logout" ng-click="app.accessService.logout()" ng-if="app.accessService.isLoggedIn()">
-        Logout
-      </md-button>
+        <md-button class="md-raised" aria-label="Logout" ng-click="app.accessService.logout()" ng-if="app.accessService.isLoggedIn()">
+          Logout
+        </md-button>
 
-      <md-button class="md-raised" aria-label="Register" ng-click="$state.go('register')" ng-if="$state.is('login')">
-        Register
-      </md-button>
+        <md-button class="md-raised" aria-label="Register" ng-click="$state.go('register')" ng-if="$state.is('login')">
+          Register
+        </md-button>
+      </div>
 
     </div>
   </md-toolbar>

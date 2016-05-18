@@ -1,0 +1,74 @@
+<div class="textCenter">
+
+  <h1>Trip Selector</h1>
+  <md-divider></md-divider>
+
+  <div layout="column">
+    <form class="form-login" name="tripSelect" novalidate style="margin-top: 10px;">
+
+      <div layout="row" layout-align="center start" layout-margin>
+        <!-- From: -->
+        <md-input-container flex="33">
+          <label>From:</label>
+          <md-select ng-model="flightCtrl.userOrigin">
+            <md-option ng-repeat="origin in flightCtrl.locations | orderBy: 'state'" ng-value="origin">
+              {{origin.state}}, {{origin.city}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <!-- To: -->
+        <md-input-container flex="33">
+          <label>To:</label>
+          <md-select ng-model="flightCtrl.userDestination">
+            <md-option ng-repeat="destination in flightCtrl.locations | orderBy: 'state'" ng-value="destination">
+              {{destination.state}}, {{destination.city}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <!-- Select button -->
+        <div flex="33">
+          <md-button class="md-raised md-primary" ng-disabled="flightCtrl.XXX" ng-click=flightCtrl.select()>
+            Select
+          </md-button>
+          <div>{{flightCtrl.errorMessage}}</div>
+        </div>
+      </div>
+    </form>
+
+    <!-- layout possible routes -->
+    <div layout="column" layout-align="center start" layout-margin>
+      <div ng-repeat="route in flightCtrl.routeModel.routeList">
+
+        <div layout="row" flex>
+          <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightCtrl.bookRoute(route)">
+            Select
+          </md-button>
+          <div flex="30">
+            Depart on Day={{route.departDay}}
+          </div>
+          <div flex="30">
+            Arrive on Day={{route.arriveDay}}
+          </div>
+          <div flex="30">
+            #Flights={{route.numFlights}}
+          </div>
+        </div>
+
+        <div ng-repeat="flight in route.flightList">
+          Flight# {{flight.flightId}}
+          <br> From: {{flight.origin.city}}, {{flight.origin.state}}
+          <br> To:   {{flight.destination.city}}, {{flight.destination.state}}
+        </div </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+</div>

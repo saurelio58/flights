@@ -93,7 +93,7 @@ public class RouteDaoImpl implements RouteDao {
 		userOrigin = routeModel.getOrigin();
 		userDestination = routeModel.getDestination();
 
-//		 flightModel = testFM;
+		// flightModel = testFM;
 
 		// // get FlightModel from service
 		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -107,7 +107,7 @@ public class RouteDaoImpl implements RouteDao {
 			if (flight.getDeparture() >= 0)
 				flightsAvailableList.add(flight);
 		}
-		
+
 		// put current day in routeModel for front end
 		routeModel.setCurrentDay(flightModel.getCurrentDay());
 
@@ -139,6 +139,12 @@ public class RouteDaoImpl implements RouteDao {
 					flightListNew.addAll(workingRoute);
 					routeNew.setFlightList(flightListNew);
 					routeNew.setRouteComplete(true);
+					/////////////////
+					routeNew.setDepartDay(flight.getDeparture());
+					Flight lastFlight = flightListNew.getLast();
+					routeNew.setArriveDay(lastFlight.getDeparture() + lastFlight.getEta());
+					routeNew.setNumFlights(flightListNew.size());
+					////////////////////
 					// add the complete route to the routeList
 					List<Route> routeList = new ArrayList<Route>();
 					routeList = routeModel.getRouteList();
