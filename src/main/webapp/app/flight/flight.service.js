@@ -15,12 +15,27 @@
 
 
 
-  ///////////////////
+    ///////////////////
     this.getAltFlts = function() {
       $log.debug('flightService.getAltFlts-init')
+
+      this.routeModel = {}
+      this.origin = {}
+      this.destination = {}
+
+      this.origin.city = this.tripDelayed.orginCity
+      this.origin.state = this.tripDelayed.orginState
+
+      this.destination.city = this.tripDelayed.destionationCity
+      this.destination.state = this.tripDelayed.destinationState
+
+      this.routeModel.origin = this.origin
+      this.routeModel.destination = this.destination
+
       return $http
-        .get('./api/locations')
+        .post('./api/routes', this.routeModel)
         .then(response => response.data)
+
     };
 
     this.getRouteModel = (routeModel) => {

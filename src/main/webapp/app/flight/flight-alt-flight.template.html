@@ -8,10 +8,10 @@
 
 
   <div layout="column">
-    
+
     <!-- layout possible routes -->
     <div layout="column" layout-align="center start" layout-margin>
-      <div ng-repeat="route in flightAltFltCtrl.routeModel.routeList | orderBy: 'arriveDay'">
+      <div ng-repeat="route in flightAltFltCtrl.altFltList.routeList | orderBy: 'arriveDay'">
 
         <div layout="row" flex>
           <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightAltFltCtrl.bookRoute(route)">

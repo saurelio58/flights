@@ -28,11 +28,7 @@
 
     this.checkAltTrips = function() {
       $log.debug('FlightDelayController.checkAltTrips-init')
-      // this.trip = flightService.getDelayTrip()
-      // flightService
-      //   .cancelTrip(this.trip.tripId)
-      //   .then(() => $state.go('tripList'))
-
+      $state.go('altFlts')
     }
 
     this.flightStatus = function(flight) {

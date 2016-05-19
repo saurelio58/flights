@@ -5,13 +5,13 @@
     .module('flights.flight')
     .constant('flightRoutes', {
 
-      altFltList: {
+      altFlts: {
         url: '/flight/altflt',
         templateUrl: 'app/flight/flight-alt-flight.template.html',
         controller: 'FlightAltFltController',
         controllerAs: 'flightAltFltCtrl',
         resolve: {
-          locations: ['flightService', '$stateParams', function(flightService, $stateParams) {
+          altFltList: ['flightService', '$stateParams', function(flightService, $stateParams) {
             return flightService.getAltFlts();
           }]
         },

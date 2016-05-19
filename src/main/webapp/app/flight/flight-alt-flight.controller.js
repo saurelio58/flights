@@ -12,9 +12,6 @@
 
     // on Html
     this.altFltList = altFltList
-    this.userOrigin
-    this.userDestination
-    this.routeModel = {}
     this.message
 
     this.bookRoute = function(route) {
@@ -28,18 +25,6 @@
 
       this.message = 'Your Trip has been reserved!'
 
-    }
-
-    this.select = () => {
-      $log.debug('FlightAltFltController.select-init')
-      $log.debug('userOrigin=' + this.userOrigin)
-      $log.debug('userDestination=' + this.userDestination)
-
-      this.routeModel.origin = this.userOrigin
-      this.routeModel.destination = this.userDestination
-      flightService.getRouteModel(this.routeModel)
-
-      this.message = null
     }
 
 
