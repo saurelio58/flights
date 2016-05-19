@@ -33,7 +33,7 @@
         <!-- Select button -->
         <div flex="33">
           <md-button class="md-raised md-primary" ng-disabled="flightSelectCtrl.XXX" ng-click=flightSelectCtrl.select()>
-            Select
+            Show Flights
           </md-button>
           <div>{{flightSelectCtrl.errorMessage}}</div>
         </div>
@@ -46,7 +46,7 @@
 
         <div layout="row" flex>
           <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightSelectCtrl.bookRoute(route)">
-            Select
+            Book
           </md-button>
           <div flex="30">
             Depart on Day={{route.departDay}}

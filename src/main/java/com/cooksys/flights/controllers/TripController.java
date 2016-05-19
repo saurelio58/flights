@@ -29,7 +29,7 @@ public class TripController {
 		return tripDao.getTrips(username);
 	}
 
-	@RequestMapping(value = "/cancel/{tripId}", method = RequestMethod.PATCH)
+	@RequestMapping(value = "/cancel/{tripId}", method = RequestMethod.PUT)
 	public Trip cancelTrip(@PathVariable String tripId) {
 		return tripDao.cancelTrip(tripId);
 	}

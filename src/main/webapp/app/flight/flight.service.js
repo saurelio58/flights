@@ -5,7 +5,7 @@
     .module('flights.flight')
     .service('flightService', FlightService);
 
-  FlightService.$inject = ['accessService','$http', '$log'];
+  FlightService.$inject = ['accessService', '$http', '$log'];
 
   function FlightService(accessService, $http, $log) {
     $log.debug('flightService-init')
@@ -36,12 +36,29 @@
       return $http
         .post('./api/trips/' + accessService.currentUser.username, route)
         .then(response => response.data)
+    }
 
+    this.getTrips = () => {
+      $log.debug('flightService.getTrips-init')
 
-
+      return $http
+        .get('./api/trips/' + accessService.currentUser.username)
+        .then(response => response.data)
+        .then(response => {
+          $log.debug('flightService.getTrips-exit')
+          $log.debug(response)
+          return response
+        });
 
     }
 
+    this.cancelTrip = (tripId) => {
+      $log.debug('flightService.cancelTrip-init')
+      this.tripId = tripId
+      return $http
+        .put('./api/trips/cancel/' + this.tripId)
+        .then(response => response.data)
+    }
 
   }
 })();

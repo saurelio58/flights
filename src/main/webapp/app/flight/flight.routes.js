@@ -25,7 +25,7 @@
         controller: 'FlightListController',
         controllerAs: 'flightListCtrl',
         resolve: {
-          tripList: ['flightService', '$stateParams', '$log', function(flightService, $stateParams) {
+          tripList: ['flightService', '$stateParams', function(flightService, $stateParams) {
             return flightService.getTrips();
           }]
         },
