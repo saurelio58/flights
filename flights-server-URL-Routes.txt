@@ -10,3 +10,4 @@ POST /flights/api/routes                    // get all possible routes for a tri
 GET   /flights/api/trips/{username}         // gets list of trips for a user
 POST  /flights/api/trips/{username}         // takes Route to reserve 'ticket'
 Put   /flights/api/trips/cancel/{tripId}    // cancel a trip
+GET   /flights/api/trips/segments/{tripId}  // gets trip and segments

@@ -150,5 +150,21 @@ public class TripDaoImpl implements TripDao {
 		
 		return trip;
 	}
+	
+	@Override
+	public List<Segment> getTripDetails(String tripId) {
+		Session session = getSession();
+		Trip trip = new Trip();
+		trip = (Trip) session.createQuery("from Trip where tripId = :tripId")
+				.setString("tripId", tripId).uniqueResult();
+		
+		int size = trip.getSegments().size(); // check for size because of "LAZY"
+		Set<Segment> segmentSet = new HashSet<Segment>();
+		List<Segment> segmentList = new ArrayList<Segment>();
+		segmentSet = trip.getSegments();
+		segmentList.addAll(segmentSet);
+		
+		return segmentList;
+	}
 
 }

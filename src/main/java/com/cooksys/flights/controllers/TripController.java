@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.flights.dao.TripDao;
 import com.cooksys.flights.models.Route;
+import com.cooksys.flights.models.Segment;
 import com.cooksys.flights.models.Trip;
 
 @RestController
@@ -32,6 +33,11 @@ public class TripController {
 	@RequestMapping(value = "/cancel/{tripId}", method = RequestMethod.PUT)
 	public Trip cancelTrip(@PathVariable String tripId) {
 		return tripDao.cancelTrip(tripId);
+	}
+	
+	@RequestMapping(value = "/segments/{tripId} ", method = RequestMethod.GET)
+	public List<Segment> getTripDetails(@PathVariable String tripId) {
+		return tripDao.getTripDetails(tripId);
 	}
 
 }
