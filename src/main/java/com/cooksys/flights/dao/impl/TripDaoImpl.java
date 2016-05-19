@@ -53,13 +53,12 @@ public class TripDaoImpl implements TripDao {
 		currentUser = userController.getUser(username);
 		users.add(currentUser);
 		userTrip.setUsers(users);
-		
+
 		// put trip in user
 		Set<Trip> userTrips = new HashSet<Trip>();
 		userTrips = currentUser.getTrips();
 		userTrips.add(userTrip);
 		currentUser.setTrips(userTrips);
-		
 
 		// put segments in Trip
 		// convert from JSON to Java
@@ -108,7 +107,8 @@ public class TripDaoImpl implements TripDao {
 		segments = userTrip.getSegments();
 		for (Segment segment : segments) {
 			Serializable rtn = session.save(segment);
-//			System.out.println("TripDaoImpl-session.save(segment) return=" + rtn);
+			// System.out.println("TripDaoImpl-session.save(segment) return=" +
+			// rtn);
 		}
 
 		return route;
@@ -116,22 +116,17 @@ public class TripDaoImpl implements TripDao {
 	}
 
 	@Override
-	public RouteModel getTrips(String username) {
+	public List<Trip> getTrips(String username) {
 
-		RouteModel routeModel = new RouteModel();
-		// // get user
-		// User user = new User();
-		// userController.getUser(username);
-		//
-		// for (Trip trip : user.getTrips()) {
-		// Route route = new Route();
-		//
-		//
-		//
-		// }
-		//
+		List<Trip> tripList = new ArrayList<Trip>();
+		Set<Trip> tripSet = new HashSet<Trip>();
 
-		return routeModel;
+		User user = userController.getUser(username);
+		int size = user.getTrips().size(); // check for size because of "LAZY"
+		tripSet = user.getTrips();
+		tripList.addAll(tripSet);
+
+		return tripList;
 	}
 
 }

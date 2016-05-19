@@ -1,5 +1,7 @@
 package com.cooksys.flights.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.flights.dao.TripDao;
 import com.cooksys.flights.models.Route;
-import com.cooksys.flights.models.RouteModel;
-import com.cooksys.flights.models.User;
+import com.cooksys.flights.models.Trip;
 
 @RestController
 @RequestMapping(value = "/trips")
@@ -24,10 +25,12 @@ public class TripController {
 		return tripDao.addTrip(username, route);
 	}
 
-	// flights/api/users/{username}
+	// flights/api/trips/{username}
 	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
-	public RouteModel getTrips(@PathVariable String username) {
+	public List<Trip> getTrips(@PathVariable String username) {
 		return tripDao.getTrips(username);
 	}
+	
+	
 
 }
