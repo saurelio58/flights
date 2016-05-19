@@ -5,6 +5,20 @@
     .module('flights.flight')
     .constant('flightRoutes', {
 
+      altFltList: {
+        url: '/flight/altflt',
+        templateUrl: 'app/flight/flight-alt-flight.template.html',
+        controller: 'FlightAltFltController',
+        controllerAs: 'flightAltFltCtrl',
+        resolve: {
+          locations: ['flightService', '$stateParams', function(flightService, $stateParams) {
+            return flightService.getAltFlts();
+          }]
+        },
+        data: {
+          loggedIn: true
+        }
+      },
       tripSelect: {
         url: '/flight/select',
         templateUrl: 'app/flight/flight-select.template.html',

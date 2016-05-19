@@ -1,0 +1,42 @@
+<div class="textCenter">
+
+  <h1>Alternate Trip Selector</h1>
+  <md-divider></md-divider>
+
+  <div>{{flightAltFltCtrl.message}}</div>
+
+
+
+  <div layout="column">
+    
+    <!-- layout possible routes -->
+    <div layout="column" layout-align="center start" layout-margin>
+      <div ng-repeat="route in flightAltFltCtrl.routeModel.routeList | orderBy: 'arriveDay'">
+
+        <div layout="row" flex>
+          <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightAltFltCtrl.bookRoute(route)">
+            Book
+          </md-button>
+          <div flex="30">
+            Depart on Day={{route.departDay}}
+          </div>
+          <div flex="30">
+            Arrive on Day={{route.arriveDay}}
+          </div>
+          <div flex="30">
+            #Flights={{route.numFlights}}
+          </div>
+        </div>
+
+        <div ng-repeat="flight in route.flightList">
+          Flight# {{flight.flightId}}
+          <br> From: {{flight.origin.city}}, {{flight.origin.state}}
+          <br> To: {{flight.destination.city}}, {{flight.destination.state}}
+          <br>
+        </div>
+        <md-divider></md-divider>
+      </div>
+
+    </div>
+  </div>
+</div>

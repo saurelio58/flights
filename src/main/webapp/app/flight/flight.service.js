@@ -13,6 +13,16 @@
     // save delayed trip
     this.tripDelayed
 
+
+
+  ///////////////////
+    this.getAltFlts = function() {
+      $log.debug('flightService.getAltFlts-init')
+      return $http
+        .get('./api/locations')
+        .then(response => response.data)
+    };
+
     this.getRouteModel = (routeModel) => {
       $log.debug('flightService.getRouteModel-init')
       return $http

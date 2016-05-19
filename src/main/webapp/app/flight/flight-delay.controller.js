@@ -26,10 +26,18 @@
 
     }
 
+    this.checkAltTrips = function() {
+      $log.debug('FlightDelayController.checkAltTrips-init')
+      // this.trip = flightService.getDelayTrip()
+      // flightService
+      //   .cancelTrip(this.trip.tripId)
+      //   .then(() => $state.go('tripList'))
+
+    }
+
     this.flightStatus = function(flight) {
       // $log.debug('FlightDelayController.flightStatus-init')
       if (flight.flightStatus == 'A') {
-
         return 'Flight has Arrived'
       } else {
         if (flight.flightStatus == 'D') {
@@ -38,9 +46,6 @@
           return 'Flight is on schedule'
         }
       }
-
-      // this.message = 'Your Trip has been canceled!'
-
     }
 
 
