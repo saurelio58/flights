@@ -25,6 +25,16 @@
 
     }
 
+    this.delayedCheck = function(trip) {
+      $log.debug('FlightListController.delayedCheck-init')
+      if (trip.tripName == 'DELAYED')
+        return true
+      else
+        return false
+    }
+
+
+
   }
 
 })();

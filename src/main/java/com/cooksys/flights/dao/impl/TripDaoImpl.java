@@ -125,6 +125,17 @@ public class TripDaoImpl implements TripDao {
 		int size = user.getTrips().size(); // check for size because of "LAZY"
 		tripSet = user.getTrips();
 		tripList.addAll(tripSet);
+		// check each segment looking for delays
+		for (Trip trip : tripList) {
+			size = trip.getSegments().size(); // check for size because of "LAZY"
+			Set<Segment> segmentSet = new HashSet<Segment>();
+			segmentSet = trip.getSegments();
+			for (Segment seg : segmentSet)
+				if (seg.getFlightStatus() == 'D') {  // delayed
+					trip.setTripName("DELAYED");
+				}
+		}
+		
 
 		return tripList;
 	}
