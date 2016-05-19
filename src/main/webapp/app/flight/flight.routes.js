@@ -19,6 +19,20 @@
           loggedIn: true
         }
       },
+      delayedFlight: {
+        url: '/flight/delay/{tripId}',
+        templateUrl: 'app/flight/flight-delay.template.html',
+        controller: 'FlightDelayController',
+        controllerAs: 'flightDelayCtrl',
+        resolve: {
+          delayedFlightList: ['flightService', '$stateParams', function(flightService, $stateParams) {
+            return flightService.getDelayedTrip($stateParams.tripId);
+          }]
+        },
+        data: {
+          loggedIn: true
+        }
+      },
       tripList: {
         url: '/flight/list',
         templateUrl: 'app/flight/flight-list.template.html',

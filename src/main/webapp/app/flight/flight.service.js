@@ -52,6 +52,20 @@
 
     }
 
+    this.getDelayedTrip = (tripId) => {
+      $log.debug('flightService.getDelayedTrip-init')
+      this.tripId = tripId
+      return $http
+        .get('./api/trips/segments/' + this.tripId)
+        .then(response => response.data)
+        .then(response => {
+          $log.debug('flightService.getTrips-exit')
+          $log.debug(response)
+          return response
+        });
+
+    }
+
     this.cancelTrip = (tripId) => {
       $log.debug('flightService.cancelTrip-init')
       this.tripId = tripId

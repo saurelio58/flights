@@ -36,7 +36,7 @@
 
       <div layout="row" flex>
         <div flex="80">
-          Message: {{trip.tripName}}
+                {{flightListCtrl.flightStatusMsg(trip.tripName)}}
         </div>
         <md-button flex="20" class="md-raised" aria-label="View Delay" ng-click="flightListCtrl.viewDelay(trip)" ng-if="flightListCtrl.delayedCheck(trip)">
           View Delay
