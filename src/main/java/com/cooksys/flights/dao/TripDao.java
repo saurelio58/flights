@@ -11,6 +11,10 @@ public interface TripDao {
 
 	List<Trip> getTrips(String username);
 
+	Trip cancelTrip(String tripId);
+
+	
+
 	
 
 }

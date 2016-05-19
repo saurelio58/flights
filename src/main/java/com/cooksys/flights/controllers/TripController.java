@@ -19,18 +19,19 @@ public class TripController {
 	@Autowired
 	private TripDao tripDao;
 
-	// flights/api/trips/{username}
 	@RequestMapping(value = "/{username}", method = RequestMethod.POST)
 	public Route addTrip(@PathVariable String username, @RequestBody Route route) {
 		return tripDao.addTrip(username, route);
 	}
 
-	// flights/api/trips/{username}
 	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
 	public List<Trip> getTrips(@PathVariable String username) {
 		return tripDao.getTrips(username);
 	}
-	
-	
+
+	@RequestMapping(value = "/cancel/{tripId}", method = RequestMethod.PATCH)
+	public Trip cancelTrip(@PathVariable String tripId) {
+		return tripDao.cancelTrip(tripId);
+	}
 
 }

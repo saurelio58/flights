@@ -129,4 +129,15 @@ public class TripDaoImpl implements TripDao {
 		return tripList;
 	}
 
+	@Override
+	public Trip cancelTrip(String tripId) {
+		Session session = getSession();
+		Trip trip = new Trip();
+		trip = (Trip) session.createQuery("from Trip where tripId = :tripId")
+				.setString("tripId", tripId).uniqueResult();
+		session.delete(trip);
+		
+		return trip;
+	}
+
 }

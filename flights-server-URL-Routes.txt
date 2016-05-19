@@ -7,8 +7,6 @@ GET  /flights/api/locations                 // get locations serviced
 POST /flights/api/routes                    // get all possible routes for a trip - body of RouteModel
 
   
-GET  //flights/api/trips/{username}         // gets list of trips for a user
-POST //flights/api/trips/{username}         // takes Route to reserve 'ticket'
-
-
-
+GET   /flights/api/trips/{username}         // gets list of trips for a user
+POST  /flights/api/trips/{username}         // takes Route to reserve 'ticket'
+PATCH /flights/api/trips/cancel/{tripId}    // cancel a trip
