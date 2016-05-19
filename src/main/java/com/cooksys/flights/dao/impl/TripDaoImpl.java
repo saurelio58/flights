@@ -41,6 +41,11 @@ public class TripDaoImpl implements TripDao {
 	public Route addTrip(String username, Route route) {
 		Session session = getSession();
 
+		//
+		// check each flight to be sure a seat is still available
+		// return Route=null if route is no longer available
+		//
+
 		Trip userTrip = new Trip();
 		User currentUser = new User();
 
@@ -127,15 +132,15 @@ public class TripDaoImpl implements TripDao {
 		tripList.addAll(tripSet);
 		// check each segment looking for delays
 		for (Trip trip : tripList) {
-			size = trip.getSegments().size(); // check for size because of "LAZY"
+			size = trip.getSegments().size(); // check for size because of
+												// "LAZY"
 			Set<Segment> segmentSet = new HashSet<Segment>();
 			segmentSet = trip.getSegments();
 			for (Segment seg : segmentSet)
-				if (seg.getFlightStatus() == 'D') {  // delayed
+				if (seg.getFlightStatus() == 'D') { // delayed
 					trip.setTripName("DELAYED");
 				}
 		}
-		
 
 		return tripList;
 	}
@@ -147,23 +152,24 @@ public class TripDaoImpl implements TripDao {
 		trip = (Trip) session.createQuery("from Trip where tripId = :tripId")
 				.setString("tripId", tripId).uniqueResult();
 		session.delete(trip);
-		
+
 		return trip;
 	}
-	
+
 	@Override
 	public List<Segment> getTripDetails(String tripId) {
 		Session session = getSession();
 		Trip trip = new Trip();
 		trip = (Trip) session.createQuery("from Trip where tripId = :tripId")
 				.setString("tripId", tripId).uniqueResult();
-		
-		int size = trip.getSegments().size(); // check for size because of "LAZY"
+
+		int size = trip.getSegments().size(); // check for size because of
+												// "LAZY"
 		Set<Segment> segmentSet = new HashSet<Segment>();
 		List<Segment> segmentList = new ArrayList<Segment>();
 		segmentSet = trip.getSegments();
 		segmentList.addAll(segmentSet);
-		
+
 		return segmentList;
 	}
 

@@ -103,6 +103,9 @@ public class RouteDaoImpl implements RouteDao {
 		List<Flight> flightsAvailableList = new ArrayList<Flight>();
 		for (Flight flight : flightModel.getFlights()) {
 			if (flight.getDeparture() >= 0)
+				//
+				//  check for a "full" flight
+				//
 				flightsAvailableList.add(flight);
 		}
 
