@@ -7,12 +7,13 @@
 
   <!-- delayed trip -->
   <div flex layout="column" layout-align="center start" layout-margin>
+    <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightDelayCtrl.cancelTrip()">
+      Cancel Trip
+    </md-button>
     <div ng-repeat="flight in flightDelayCtrl.delayedFlightList | orderBy: 'flightId'">
 
       <div layout="row" flex>
-        <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightDelayCtrl.cancelTrip(trip)">
-          Cancel
-        </md-button>
+
         <div flex="25">
           Flight #={{flight.flightNumber}}
         </div>

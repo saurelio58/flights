@@ -35,17 +35,13 @@
 
     this.viewDelay = function(trip) {
       $log.debug('FlightListController.viewDelay-init')
+      this.trip = trip
+      flightService.saveDelayTrip(this.trip)
       $state.go('delayedFlight', {
         tripId: trip.tripId
       })
     }
 
-    //   this.flightStatusMsg = function(status) {
-    //     // $log.debug('FlightDelayController.flightStatus-init')
-    //     if (status == 'DELAYED') {
-    //       return 'Flight has Delays'
-    //     }
-    // }
 
   }
 })();

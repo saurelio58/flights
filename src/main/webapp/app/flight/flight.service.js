@@ -10,6 +10,8 @@
   function FlightService(accessService, $http, $log) {
     $log.debug('flightService-init')
 
+    // save delayed trip
+    this.tripDelayed
 
     this.getRouteModel = (routeModel) => {
       $log.debug('flightService.getRouteModel-init')
@@ -73,6 +75,20 @@
         .put('./api/trips/cancel/' + this.tripId)
         .then(response => response.data)
     }
+
+    this.saveDelayTrip = function(trip) {
+      $log.debug('FlightDelayController.saveDelayTrip-init')
+      this.tripDelayed = trip
+
+    }
+
+    this.getDelayTrip = function() {
+      $log.debug('FlightDelayController.getDelayTrip-init')
+      return this.tripDelayed
+
+    }
+
+
 
   }
 })();

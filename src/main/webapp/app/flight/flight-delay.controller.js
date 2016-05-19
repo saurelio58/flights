@@ -14,11 +14,12 @@
     this.delayedFlightList = delayedFlightList
     this.message
 
-    this.cancelTrip = function(trip) {
+    this.cancelTrip = function() {
       $log.debug('FlightDelayController.cancelTrip-init')
+      this.trip = flightService.getDelayTrip()
       flightService
-        .cancelTrip(trip.tripId)
-        .then(() => $state.reload())
+        .cancelTrip(this.trip.tripId)
+        .then(() => $state.go('tripList'))
         // check for errors ???
 
       // this.message = 'Your Trip has been canceled!'
