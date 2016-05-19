@@ -49,10 +49,7 @@
               delete this.currentUser.password;
               credentials = undefined;
               $log.debug('AccessService.login-ready to transfer to "flight/select"')
-              // $location.path('flight/select')
-              // $location.path('register')
-              $state.go('trip')
-              // $state.go('register')
+              $state.go('tripSelect')
             } else {
               $log.debug('AccessService.login-invalid username or password');
               this.currentuser = undefined;

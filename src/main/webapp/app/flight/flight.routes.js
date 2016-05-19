@@ -5,14 +5,28 @@
     .module('flights.flight')
     .constant('flightRoutes', {
 
-      trip: {
+      tripSelect: {
         url: '/flight/select',
         templateUrl: 'app/flight/flight-select.template.html',
         controller: 'FlightSelectController',
-        controllerAs: 'flightCtrl',
+        controllerAs: 'flightSelectCtrl',
         resolve: {
-          locations: ['flightService', '$stateParams', '$log', function(flightService, $stateParams) {
+          locations: ['flightService', '$stateParams', function(flightService, $stateParams) {
             return flightService.getLocations();
+          }]
+        },
+        data: {
+          loggedIn: true
+        }
+      },
+      tripList: {
+        url: '/flight/list',
+        templateUrl: 'app/flight/flight-list.template.html',
+        controller: 'FlightListController',
+        controllerAs: 'flightListCtrl',
+        resolve: {
+          tripList: ['flightService', '$stateParams', '$log', function(flightService, $stateParams) {
+            return flightService.getTrips();
           }]
         },
         data: {
