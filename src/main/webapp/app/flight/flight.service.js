@@ -13,9 +13,6 @@
     // save delayed trip
     this.tripDelayed
 
-
-
-    ///////////////////
     this.getAltFlts = function() {
       $log.debug('flightService.getAltFlts-init')
 
