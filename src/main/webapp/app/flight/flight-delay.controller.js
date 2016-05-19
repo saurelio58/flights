@@ -31,6 +31,14 @@
       $state.go('altFlts')
     }
 
+    this.checkAltTripsLocation = function() {
+      $log.debug('FlightDelayController.checkAltTripsLocation-init')
+      // find first delayed flight in route
+      // get the location of the delayed flight
+      // modify this.tripDelayed in flightService
+      // $state.go('altFlts')
+    }
+
     this.flightStatus = function(flight) {
       // $log.debug('FlightDelayController.flightStatus-init')
       if (flight.flightStatus == 'A') {
