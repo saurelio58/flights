@@ -57,33 +57,29 @@
 
             <h1>CookSys Airways</h1>
 
-            <md-divider></md-divider>
+            <md-button class="md-raised" aria-label="Login" ng-click="$state.go('login')" ng-if="$state.is('register')">
+                Login
+            </md-button>
 
-            <div layout-align="end center">
-                <h3 ng-if="app.accessService.isLoggedIn()" style="font-size: 14dp; float: right; text-align: right; margin-right: 5px;">
-                    Logged in as:<br>{{app.accessService.currentUser.firstName}} {{app.accessService.currentUser.lastName}}
-                </h3>
+            <md-button class="md-raised" aria-label="Register" ng-click="$state.go('register')" ng-if="$state.is('login')">
+                Register
+            </md-button>
 
-                <md-button class="md-raised" aria-label="Login" ng-click="$state.go('login')" ng-if="$state.is('register')">
-                    Login
-                </md-button>
+            <md-button class="md-raised" aria-label="Trip Selector" ng-click="$state.go('tripSelect')" ng-if="app.accessService.isLoggedIn()">
+                Trip Selector
+            </md-button>
 
-                <md-button class="md-raised" aria-label="Register" ng-click="$state.go('register')" ng-if="$state.is('login')">
-                    Register
-                </md-button>
+            <md-button class="md-raised" aria-label="Current Trips" ng-click="$state.go('tripList')" ng-if="app.accessService.isLoggedIn()">
+                Current Trips
+            </md-button>
 
-                <md-button class="md-raised" aria-label="Logout" ng-click="app.accessService.logout()" ng-if="app.accessService.isLoggedIn()">
-                    Logout
-                </md-button>
+            <md-button class="md-raised" aria-label="Logout" ng-click="app.accessService.logout()" ng-if="app.accessService.isLoggedIn()">
+                Logout
+            </md-button>
 
-                <md-button class="md-raised" aria-label="TRIP SELECTOR" ng-click="$state.go('tripSelect')" ng-if="app.accessService.isLoggedIn()">
-                    TRIP SELECTOR
-                </md-button>
-
-                <md-button class="md-raised" aria-label="CURRENT TRIPS" ng-click="$state.go('tripList')" ng-if="app.accessService.isLoggedIn()">
-                    CURRENT TRIPS
-                </md-button>
-            </div>
+            <p ng-if="app.accessService.isLoggedIn()" style="float: right; text-align: right; vertical-align:middle; margin-right: 5px;">
+                Welcome, {{app.accessService.currentUser.firstName}} {{app.accessService.currentUser.lastName}}
+            </p>
 
         </div>
     </md-toolbar>
