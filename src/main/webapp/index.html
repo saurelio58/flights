@@ -43,7 +43,6 @@
     <script src="./app/flight/flight.routes.js"></script>
     <script src="./app/flight/flight.config.js"></script>
 
-
     <script src="./app/app.module.js"></script>
     <script src="./app/app.controller.js"></script>
     <script src="./app/app.config.js"></script>
@@ -62,8 +61,8 @@
 
             <div layout-align="end center">
                 <h3 ng-if="app.accessService.isLoggedIn()" style="font-size: 14dp; float: right; text-align: right; margin-right: 5px;">
-          Logged in as:<br>{{app.accessService.currentUser.firstName}} {{app.accessService.currentUser.lastName}}
-        </h3>
+                    Logged in as:<br>{{app.accessService.currentUser.firstName}} {{app.accessService.currentUser.lastName}}
+                </h3>
 
                 <md-button class="md-raised" aria-label="Login" ng-click="$state.go('login')" ng-if="$state.is('register')">
                     Login
@@ -77,11 +76,11 @@
                     Logout
                 </md-button>
 
-                <md-button class="md-raised" aria-label="New Flight" ng-click="$state.go('tripSelect')" ng-if="app.accessService.isLoggedIn()">
+                <md-button class="md-raised" aria-label="TRIP SELECTOR" ng-click="$state.go('tripSelect')" ng-if="app.accessService.isLoggedIn()">
                     TRIP SELECTOR
                 </md-button>
 
-                <md-button class="md-raised" aria-label="New Flight" ng-click="$state.go('tripList')" ng-if="app.accessService.isLoggedIn()">
+                <md-button class="md-raised" aria-label="CURRENT TRIPS" ng-click="$state.go('tripList')" ng-if="app.accessService.isLoggedIn()">
                     CURRENT TRIPS
                 </md-button>
             </div>
