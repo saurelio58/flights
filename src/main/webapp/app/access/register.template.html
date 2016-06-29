@@ -1,45 +1,42 @@
-<div layout="column" layout padding style="width: 100vw; height: 100vh;">
+<h1>Register</h1>
+<md-divider></md-divider>
+<br>
 
-    <div>
-        <h1>Register</h1>
-    </div>
+<div layout="column" layout-align="space-around center">
+    <form class="form-register " name="register " novalidate>
 
-    <div layout="column" layout-align="space-around center" margin-top: 10px>
-        <form class="form-register " name="register " novalidate>
+        <div class="input-field ">
+            <input id="first-name " type="text " class="validate " required ng-model="$register.user.firstName ">
+            <label for="first-name ">First Name</label>
+        </div>
 
-            <div class="input-field ">
-                <input id="first-name " type="text " class="validate " required ng-model="$register.user.firstName ">
-                <label for="first-name ">First Name</label>
-            </div>
+        <div class="input-field ">
+            <input id="last-name " type="text " class="validate " required ng-model="$register.user.lastName ">
+            <label for="last-name ">Last Name</label>
+        </div>
 
-            <div class="input-field ">
-                <input id="last-name " type="text " class="validate " required ng-model="$register.user.lastName ">
-                <label for="last-name ">Last Name</label>
-            </div>
+        <div class="input-field ">
+            <input id="username " type="text " name="username " ng-model="$register.user.username " class="validate " required>
+            <label for="username ">Username</label>
+        </div>
 
-            <div class="input-field ">
-                <input id="username " type="text " name="username " ng-model="$register.user.username " class="validate " required>
-                <label for="username ">Username</label>
-            </div>
+        <div class="input-field ">
+            <input id="password " type="password " name="password " ng-model="$register.user.password " ng-minlength='6' class="validate " required>
+            <label for="password ">Password</label>
+        </div>
 
-            <div class="input-field ">
-                <input id="password " type="password " name="password " ng-model="$register.user.password " ng-minlength='6' class="validate " required>
-                <label for="password ">Password</label>
-            </div>
+        <p class="alert alert-danger " ng-show="form-register.password.$error.minlength || form.password.$invalid ">Your password must be at least 6 characters!</p>
 
-            <p class="alert alert-danger " ng-show="form-register.password.$error.minlength || form.password.$invalid ">Your password must be at least 6 characters!</p>
+        <div class="space-top textCenter ">
+            <md-button class="md-raised md-primary " ng-disabled="form-register.$invalid " ng-click=$register.register()>
+                Register
+            </md-button>
+            <md-button class="md-raised md-primary " ng-click="$register.user=null; ">
+                Cancel
+            </md-button>
+        </div>
 
-            <div class="space-top textCenter ">
-                <md-button class="md-raised md-primary " ng-disabled="form-register.$invalid " ng-click=$register.register()>
-                    Register
-                </md-button>
-                <md-button class="md-raised md-primary " ng-click="$register.user=null; ">
-                    Cancel
-                </md-button>
-            </div>
+        <div>{{$register.errorMessage}}</div>
 
-            <div>{{$register.errorMessage}}</div>
-
-        </form>
-    </div>
+    </form>
 </div>
