@@ -1,0 +1,50 @@
+<div class="textCenter">
+
+  <h1>Current Trips</h1>
+  <md-divider></md-divider>
+
+  <div>{{flightListCtrl.message}}
+  </div>
+
+  <!-- current trips -->
+  <div flex layout="column" layout-align="center start" layout-margin>
+    <div ng-repeat="trip in flightListCtrl.tripList | orderBy: 'departDay'">
+
+      <div layout="row" flex>
+        <md-button flex="20" class="md-raised" aria-label="Select" ng-click="flightListCtrl.cancelTrip(trip)">
+          Cancel
+        </md-button>
+        <div flex="25">
+          Depart on Day={{trip.departDay}}
+        </div>
+        <div flex="25">
+          Arrive on Day={{trip.arriveDay}}
+        </div>
+        <div flex="25">
+          #Flights={{trip.numFlights}}
+        </div>
+      </div>
+
+      <div layout="row" flex>
+        <div flex="40">
+          From={{trip.orginCity}}, {{trip.orginState}}
+        </div>
+        <div flex="40">
+          To={{trip.destionationCity}}, {{trip.destinationState}}
+        </div>
+      </div>
+
+      <div layout="row" flex>
+        <div flex="80">
+                {{flightListCtrl.flightStatusMsg(trip.tripName)}}
+        </div>
+        <md-button flex="20" class="md-raised" aria-label="View Delay" ng-click="flightListCtrl.viewDelay(trip)" ng-if="flightListCtrl.delayedCheck(trip)">
+          View Delay
+        </md-button>
+
+
+      </div>
+      <md-divider></md-divider>
+    </div>
+  </div>
+</div>

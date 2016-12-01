@@ -1,0 +1,38 @@
+<div class="textCenter">
+
+  <h1>Delayed Trip</h1>
+  <md-divider></md-divider>
+
+  <div>{{flightDelayCtrl.message}}</div>
+
+  <!-- delayed trip -->
+  <div flex layout="column" layout-align="center start" layout-margin>
+    <md-button flex="20" class="md-raised" aria-label="Cancel Trip" ng-click="flightDelayCtrl.cancelTrip()">
+      Cancel Trip
+    </md-button>
+    <md-button flex="20" class="md-raised" aria-label="Check for Alternative Trips" ng-click="flightDelayCtrl.checkAltTrips()">
+      Check for Alternative Trips
+    </md-button>
+
+    <md-button flex="20" class="md-raised" aria-label="Check for Alternative Trips" ng-click="flightDelayCtrl.checkAltTripsLocation()">
+      Check for Alternative Trips from Delayed Location
+    </md-button>
+
+    <div ng-repeat="flight in flightDelayCtrl.delayedFlightList | orderBy: 'flightId'">
+
+      <div layout="row" flex>
+
+        <div flex="25">
+          Flight #={{flight.flightNumber}}
+        </div>
+        <div flex="25">
+          Flight Status={{flightDelayCtrl.flightStatus(flight)}}
+        </div>
+
+      </div>
+
+    </div>
+    <md-divider></md-divider>
+  </div>
+</div>
+</div>
