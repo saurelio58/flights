@@ -1,5 +1,7 @@
 package com.cooksys.flights.dao.impl;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,7 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		} else {
 			// create new user
+			user.setLastUpdate(new Date());  // set to current date/time
 			session.save(user);
 			System.out.println(user.getUserId());
 			return getUser(user.getUsername());
